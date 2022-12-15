@@ -11,7 +11,7 @@ defmodule Exoteric.MixProject do
       package: package(),
       deps: deps(),
       docs: [
-        main: "readme",
+        main: "Exoteric",
         extras: ["README.md"],
         api_reference: false
       ]

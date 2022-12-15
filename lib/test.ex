@@ -1,4 +1,6 @@
 defmodule Test do
+  @moduledoc false
+
   import Exoteric
 
   defcase fib do
@@ -18,6 +20,10 @@ defmodule Test do
     n -> fib_tail_rec(n, 1, 1)
     0, a, _ -> a
     n, a, b -> fib_tail_rec(n - 1, b, a + b)
+  end
+
+  def even_or_odd(n) do
+    rem(n, 2) == 0 \\ "even" \\ "odd"
   end
 
 end

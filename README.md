@@ -76,3 +76,15 @@ def fib_tail_rec(n), do: fib_tail_rec(n, 1, 1)
 def fib_tail_rec(0, a, _), do: a
 def fib_tail_rec(n, a, b), do: fib_tail_rec(n - 1, b, a + b)
 ```
+
+## Ternary operator `\\`
+
+```elixir
+rem(n, 2) == 0 \\ "even" \\ "odd"
+```
+
+Expands to:
+
+```elixir
+if rem(n, 2) == 0, do: "even", else: "odd"
+```

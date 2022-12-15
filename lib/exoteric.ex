@@ -21,8 +21,7 @@ defmodule Exoteric do
   defmacro defmulti({name, _, _}, [do: block]) do
     {:__block__, [], [
       Enum.map(block, fn
-        {:->, meta, [params, body]} ->
-          IO.inspect(meta)
+        {:->, _, [params, body]} ->
           {:def, [context: __MODULE__], [
             {name, [context: __MODULE__], params},
             [do: body]
@@ -49,6 +48,12 @@ defmodule Exoteric do
       {name, [context: __MODULE__], params},
       [do: {:cond, meta, [block]}]
     ]}
+  end
+
+  defmacro {:\\, _, [predicate, true_]} \\ false_ do
+    quote do
+      if unquote(predicate), do: unquote(true_), else: unquote(false_)
+    end
   end
 
 end
