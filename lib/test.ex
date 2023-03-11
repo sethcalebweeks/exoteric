@@ -26,4 +26,29 @@ defmodule Test do
     rem(n, 2) == 0 \\ "even" \\ "odd"
   end
 
+  def destructing_example do
+    map = %{
+      "string_key" => 1,
+      :atom_key => 2,
+      {1, 2} => 3,
+      %{key: "value"} => 4
+    }
+
+    destructure_map map do
+      string_key <- "string_key"
+      atom_key <- :atom_key
+      tuple_key <- {1, 2}
+      map_key <- %{key: "value"}
+      missing_key <- :does_not_exist
+    end
+
+    [
+      string_key,
+      atom_key,
+      tuple_key,
+      map_key,
+      missing_key
+    ] = [1, 2, 3, 4, nil]
+  end
+
 end

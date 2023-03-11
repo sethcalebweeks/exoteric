@@ -56,4 +56,12 @@ defmodule Exoteric do
     end
   end
 
+  defmacro destructure_map(map, do: {:__block__, _, block}) do
+    Enum.map(block, fn {:<-, _, [identifier, key]} ->
+      quote do
+        var!(unquote(identifier)) = Map.get(unquote(map), unquote(key))
+      end
+    end)
+  end
+
 end

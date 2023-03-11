@@ -77,6 +77,28 @@ def fib_tail_rec(0, a, _), do: a
 def fib_tail_rec(n, a, b), do: fib_tail_rec(n - 1, b, a + b)
 ```
 
+## Map destructuring
+
+```elixir
+destructure_map map do
+  string_key <- "string_key"
+  atom_key <- :atom_key
+  tuple_key <- {1, 2}
+  map_key <- %{key: "value"}
+  missing_key <- :does_not_exist
+end
+```
+
+Expands to:
+
+```elixir
+string_key = Map.get(map, "string_key")
+atom_key = Map.get(map, :atom_key)
+tuple_key = Map.get(map, {1, 2})
+map_key = Map.get(map, %{key: "value"})
+missing_key = Map.get(map, :does_not_exist)
+```
+
 ## Ternary operator `\\`
 
 ```elixir
